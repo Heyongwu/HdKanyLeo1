@@ -4,7 +4,7 @@ package com.video.Kanyleo.bean;
  * Created by lenovo on 2017/10/22.
  */
 
-public class ZhuCeBean {
+public class RegisterBean {
 
     /**
      * code : 200

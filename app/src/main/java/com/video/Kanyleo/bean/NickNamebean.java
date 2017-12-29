@@ -4,7 +4,7 @@ package com.video.Kanyleo.bean;
  * Created by Yw_Ambition on 2017/11/9.
  */
 
-public class niackanmebean {
+public class NickNamebean {
 
 
     /**
