@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.video.Kanyleo.utils.AllBack;
-import com.video.Kanyleo.bean.niackanmebean;
+import com.video.Kanyleo.bean.NickNamebean;
 import com.video.Kanyleo.utils.OkHttp;
 
 import java.util.HashMap;
@@ -35,7 +35,7 @@ public class nicknamePresenter {
             public void onFailed(String tag, String e) {
                 nicknameView.failed(tag, e);
             }
-        },niackanmebean.class,"");
+        },NickNamebean.class,"");
     }
     public boolean checkData(String name) {
         if(TextUtils.isEmpty(name)){
