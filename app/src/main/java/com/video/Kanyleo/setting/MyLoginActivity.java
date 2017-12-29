@@ -66,8 +66,7 @@ public class MyLoginActivity extends AppCompatActivity implements IloginActivity
                 break;
             case R.id.lg_bt:
                 presenter.getLogin();
-                Intent intent = new Intent(MyLoginActivity.this, LoginNRActivity.class);
-                startActivity(intent);
+
                 break;
             case R.id.tv_register:
                 presenter.Toregister();
@@ -112,5 +111,12 @@ public class MyLoginActivity extends AppCompatActivity implements IloginActivity
         finish();
 
     }
+
+    @Override
+    public void Toclass() {
+        Intent intent = new Intent(MyLoginActivity.this, LoginNRActivity.class);
+        startActivity(intent);
+    }
+
 
 }

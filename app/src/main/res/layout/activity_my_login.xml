@@ -6,12 +6,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
-
-    <TextView
-        android:gravity="center"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="京东登录" />
+        android:layout_height="50dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手机号登录" />
+    </RelativeLayout>
+
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,11 +30,33 @@
         android:layout_height="wrap_content"
         android:id="@+id/lg_et2"
         android:hint="请输入密码"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/tongyi"
+            android:layout_marginLeft="10dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我已阅读、理解并同意服务协议及隐私条款"
+            />
+    </LinearLayout>
     <Button
+        android:layout_marginTop="15dp"
         android:text="登录"
+        android:textColor="#ffffff"
+        android:background="@drawable/shopcart_add_btn"
+        android:paddingBottom="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingTop="2dp"
         android:id="@+id/lg_bt"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="35dp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -42,7 +72,8 @@
             android:layout_weight="1"
             android:layout_marginTop="7dp"
             android:gravity="center"
-            android:text="QQ快捷登录"
+            android:text="忘记密码？"
+            android:textColor="#d90733"
             android:id="@+id/tv_QQ"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

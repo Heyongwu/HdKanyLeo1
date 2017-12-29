@@ -10,4 +10,5 @@ public interface IloginActivity {
     void show(String str);
     void ToRegister();
     void ToSend(int cid, String name);
+    void Toclass();
 }

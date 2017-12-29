@@ -25,7 +25,7 @@ public class LoginPresenter {
                 iloginActivity.show(loginBean.getMsg());
                 if(loginBean.getCode().equals("0")){
                     iloginActivity.ToSend(loginBean.getData().getUid(),loginBean.getData().getUsername());
-
+                    iloginActivity.Toclass();
                 }
             }
 
