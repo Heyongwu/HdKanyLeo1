@@ -9,31 +9,30 @@ import android.util.Log;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-import com.video.Kanyleo.fragment.Append_Fragment;
-import com.video.Kanyleo.fragment.Home_Fragment;
-import com.video.Kanyleo.fragment.My_Fragment;
-import com.video.Kanyleo.utils.ChenJinShi;
+import com.video.Kanyleo.fragment.AppendFragment;
+import com.video.Kanyleo.fragment.HomeFragment;
+import com.video.Kanyleo.fragment.MyFragment;
 
-import com.video.Kanyleo.fragment.Concern_Fragment;
-import com.video.Kanyleo.fragment.News_Fragment;
+import com.video.Kanyleo.fragment.ConcernFragment;
+import com.video.Kanyleo.fragment.NewsFragment;
 
 public class LoginNRActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener {
 
     private BottomNavigationBar bottomNavigationBar;
     int lastSelectedPosition = 0;
     private String TAG = MainActivity.class.getSimpleName();
-    Home_Fragment home;
-    Concern_Fragment concern;
-    Append_Fragment append;
-    News_Fragment news;
-    My_Fragment my;
+    HomeFragment home;
+    ConcernFragment concern;
+    AppendFragment append;
+    NewsFragment news;
+    MyFragment my;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_nr);
         //隐藏标题栏以及沉浸式的实现
-        ChenJinShi.getInstance().Immersive(getWindow(), getActionBar());
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
@@ -82,7 +81,7 @@ public class LoginNRActivity extends AppCompatActivity implements BottomNavigati
     private void setDefaultFragment() {
         FragmentManager fm=getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        home = new Home_Fragment();
+        home = new HomeFragment();
         transaction.replace(R.id.tb, home);
         transaction.commit();
     }
@@ -96,30 +95,30 @@ public class LoginNRActivity extends AppCompatActivity implements BottomNavigati
         switch (position) {
             case 0:
                 if (home == null)
-                    home = new Home_Fragment();
+                    home = new HomeFragment();
                 transaction.replace(R.id.tb, home);
                 break;
 
             case 1:
                 if (concern == null)
-                    concern = new Concern_Fragment();
+                    concern = new ConcernFragment();
                 transaction.replace(R.id.tb, concern);
                 break;
             case 2:
                 if (append == null)
-                    append = new Append_Fragment();
+                    append = new AppendFragment();
                 transaction.replace(R.id.tb, append);
                 break;
 
             case 3:
                 if (news == null)
-                    news = new News_Fragment();
+                    news = new NewsFragment();
                 transaction.replace(R.id.tb, news);
                 break;
 
             case 4:
                 if (my == null)
-                    my = new My_Fragment();
+                    my = new MyFragment();
                 transaction.replace(R.id.tb, my);
                 break;
             default:

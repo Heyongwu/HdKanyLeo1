@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.video.Kanyleo.R;
-import com.video.Kanyleo.bean.Sp_Bean;
+import com.video.Kanyleo.bean.VoBean;
 
 import java.util.List;
 
@@ -18,12 +18,13 @@ import java.util.List;
 
 public class VideoAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolder> {
     Context context;
-    List<Sp_Bean.DataBeanX.DataBean> splist;
+    List<VoBean.DataBeanX.DataBean> splist;
 
-    public VideoAdapter(Context context, List<Sp_Bean.DataBeanX.DataBean> splist) {
+    public VideoAdapter(Context context, List<VoBean.DataBeanX.DataBean> splist) {
         this.context = context;
         this.splist = splist;
     }
+
 
     @Override
     public XRecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
