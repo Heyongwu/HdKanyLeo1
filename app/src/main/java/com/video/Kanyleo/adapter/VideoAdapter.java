@@ -16,11 +16,11 @@ import java.util.List;
  * Created by len on 2017/12/26.
  */
 
-public class SpAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolder> {
+public class VideoAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolder> {
     Context context;
     List<Sp_Bean.DataBeanX.DataBean> splist;
 
-    public SpAdapter(Context context, List<Sp_Bean.DataBeanX.DataBean> splist) {
+    public VideoAdapter(Context context, List<Sp_Bean.DataBeanX.DataBean> splist) {
         this.context = context;
         this.splist = splist;
     }

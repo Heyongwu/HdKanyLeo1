@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.video.Kanyleo.R;
-import com.video.Kanyleo.adapter.SpAdapter;
+import com.video.Kanyleo.adapter.VideoAdapter;
 import com.video.Kanyleo.bean.Sp_Bean;
 import com.video.Kanyleo.presenter.VodeoPresenter;
 import com.video.Kanyleo.view.ISpView;
@@ -25,7 +25,7 @@ import java.util.List;
 public class Video_Fragment extends Fragment implements ISpView {
     private View view;
     private XRecyclerView mRv;
-    SpAdapter spAdapter;
+    VideoAdapter spAdapter;
     VodeoPresenter spPresenter;
     int min_time=0;
     @Nullable
@@ -46,7 +46,7 @@ public class Video_Fragment extends Fragment implements ISpView {
     public void showSP(List<Sp_Bean.DataBeanX.DataBean> splist) {
         GridLayoutManager manager=new GridLayoutManager(getContext(),2);
         mRv.setLayoutManager(manager);
-        spAdapter=new SpAdapter(getContext(),splist);
+        spAdapter=new VideoAdapter(getContext(),splist);
         mRv.setAdapter(spAdapter);
         mRv.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
