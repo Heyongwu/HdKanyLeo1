@@ -13,12 +13,11 @@ import android.view.View;
 import android.widget.TextView;
 
 
-import com.video.Kanyleo.fragment.Sinatv_Fragment;
-import com.video.Kanyleo.fragment.Video_Fragment;
+import com.video.Kanyleo.fragment.SinatvFragment;
+import com.video.Kanyleo.fragment.VideoFragment;
 import com.video.Kanyleo.setting.MyLoginActivity;
-import com.video.Kanyleo.utils.ChenJinShi;
 
-public class NRActivity extends AppCompatActivity {
+public class PrimaryActivity extends AppCompatActivity {
 
     private TabLayout mTb;
     private ViewPager mVp;
@@ -33,8 +32,7 @@ public class NRActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nr);
         initView();
-        //隐藏标题栏以及沉浸式的实现
-        ChenJinShi.getInstance().Immersive(getWindow(), getActionBar());
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         tbAdapter=new TbAdapter(getSupportFragmentManager());
@@ -43,7 +41,7 @@ public class NRActivity extends AppCompatActivity {
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NRActivity.this, MyLoginActivity.class);
+                Intent intent = new Intent(PrimaryActivity.this, MyLoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -67,11 +65,11 @@ public class NRActivity extends AppCompatActivity {
             switch (position){
                 //注意：activity中导入的包必须和碎片一致 v4包
                 case 0:
-                    return new Sinatv_Fragment();
+                    return new SinatvFragment();
                 case 1:
-                    return new Video_Fragment();
+                    return new VideoFragment();
             }
-            return new Video_Fragment();
+            return new VideoFragment();
         }
 
         @Override

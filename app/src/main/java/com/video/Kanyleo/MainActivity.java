@@ -7,8 +7,6 @@ import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
-import com.video.Kanyleo.utils.ChenJinShi;
-
 import com.video.Kanyleo.setting.ImgApp2;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ChenJinShi.getInstance().Immersive(getWindow(),getActionBar());
+
         //隐藏标题栏
         ActionBar actionBar=getSupportActionBar();
         actionBar.hide();
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     return ;
                 }else if(isLogin==false){
-                    Intent intent = new Intent(MainActivity.this, NRActivity.class);
+                    Intent intent = new Intent(MainActivity.this, PrimaryActivity.class);
                     startActivity(intent);
                     return;
                 }

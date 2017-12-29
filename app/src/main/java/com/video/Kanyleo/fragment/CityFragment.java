@@ -14,11 +14,11 @@ import com.video.Kanyleo.R;
  * Created by len on 2017/12/26.
  */
 
-public class Sinatv_Fragment extends Fragment {
+public class CityFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=View.inflate(getContext(), R.layout.zb,null);
+        View view=View.inflate(getContext(), R.layout.tc,null);
         return view;
     }
 }

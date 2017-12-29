@@ -14,11 +14,11 @@ import java.util.HashMap;
  * Created by Liu xiong biao on 2017/12/9.
  */
 
-public class nicknamePresenter {
+public class NickNamePresenter {
     private Context context;
-    private NicknameView nicknameView;
+    private NickNameView nicknameView;
 
-    public nicknamePresenter(Context context, NicknameView nicknameView) {
+    public NickNamePresenter(Context context, NickNameView nicknameView) {
         this.context = context;
         this.nicknameView = nicknameView;
     }

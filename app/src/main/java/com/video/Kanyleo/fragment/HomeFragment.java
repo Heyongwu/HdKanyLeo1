@@ -18,7 +18,7 @@ import com.video.Kanyleo.R;
  * Created by len on 2017/12/26.
  */
 
-public class Home_Fragment extends Fragment {
+public class HomeFragment extends Fragment {
     private TabLayout mLtb;
     private ViewPager mLvp;
     String[] itemName = {"直播","视频","同城"};
@@ -49,13 +49,13 @@ public class Home_Fragment extends Fragment {
             switch (position){
                 //注意：activity中导入的包必须和碎片一致 v4包
                 case 0:
-                    return new Sinatv_Fragment();
+                    return new SinatvFragment();
                 case 1:
-                    return new Video_Fragment();
+                    return new VideoFragment();
                 case 2:
-                    return new City_Fragment();
+                    return new CityFragment();
             }
-            return new Video_Fragment();
+            return new VideoFragment();
         }
 
         @Override
