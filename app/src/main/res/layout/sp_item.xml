@@ -7,7 +7,6 @@
         android:id="@+id/sdv"
         android:layout_width="match_parent"
         android:layout_height="500dp"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
     <TextView
         android:id="@+id/place"
@@ -39,7 +38,7 @@
             app:roundAsCircle="true"
             />
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/wenname"
             android:layout_gravity="center"
             android:textColor="@color/white_c"
             android:layout_width="wrap_content"
