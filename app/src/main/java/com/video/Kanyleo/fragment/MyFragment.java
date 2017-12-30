@@ -49,9 +49,11 @@ public class MyFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        //更改名字
         if (resultCode==2){
             String names = data.getStringExtra("name");
             name.setText(names);
+
 
         }
     }
