@@ -21,7 +21,7 @@ public class VideoPresenter {
         this.iVideoView = iVideoView;
         iVideoModel = new VideoModel();
     }
-    public void showVideo(){
+    public void showVideo(int min){
         iVideoModel.showVideo(new OnNetListener<VoBean>() {
             @Override
             public void onSuccess(VoBean voBean) {
@@ -33,12 +33,13 @@ public class VideoPresenter {
                     list.add(data);
                 }
                 iVideoView.showSP(list);
+
             }
 
             @Override
             public void onFailure(Exception e) {
 
             }
-        });
+        },min);
     }
 }

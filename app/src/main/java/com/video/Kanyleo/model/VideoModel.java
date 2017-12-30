@@ -17,9 +17,9 @@ import io.reactivex.schedulers.Schedulers;
 public class VideoModel implements IVideoModel {
 
     @Override
-    public void showVideo(final OnNetListener<VoBean> onNetListener) {
+    public void showVideo(final OnNetListener<VoBean> onNetListener,int min) {
         ApiService serviceAPI = RetrofitHelper.getServiceAPI();
-        Flowable<VoBean> video = serviceAPI.getVideo();
+        Flowable<VoBean> video = serviceAPI.getVideo(min);
         video.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<VoBean>() {

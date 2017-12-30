@@ -8,5 +8,5 @@ import com.video.Kanyleo.utils.OnNetListener;
  */
 
 public interface IVideoModel {
-    void showVideo(OnNetListener<VoBean> onNetListener);
+    void showVideo(OnNetListener<VoBean> onNetListener,int min);
 }

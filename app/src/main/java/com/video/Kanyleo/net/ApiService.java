@@ -5,6 +5,7 @@ import com.video.Kanyleo.utils.Api;
 
 import io.reactivex.Flowable;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 /**
  * Created by len on 2017/12/26.
@@ -12,7 +13,6 @@ import retrofit2.http.GET;
 
 public interface ApiService {
 
-
     @GET(Api.VIDEO)
-    Flowable<VoBean> getVideo();
+    Flowable<VoBean> getVideo(@Query("min_time") int min);
 }

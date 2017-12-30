@@ -141,4 +141,5 @@ public class LoginNRActivity extends AppCompatActivity implements BottomNavigati
     public void onTabReselected(int position) {
 
     }
+
 }

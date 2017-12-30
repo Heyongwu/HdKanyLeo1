@@ -34,7 +34,7 @@ public class RetrofitHelper {
         if(apiService==null){
             synchronized (ApiService.class){
                 if(apiService==null){
-                    apiService=Oncreat(ApiService.class,Api.HOSTTWO);
+                    apiService=Oncreat(ApiService.class,Api.HOSTONE);
                 }
             }
         }
