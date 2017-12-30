@@ -8,8 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
+import com.video.Kanyleo.CompileActivity;
 import com.video.Kanyleo.ModificationActivity;
 import com.video.Kanyleo.R;
 
@@ -25,24 +25,17 @@ public class MyFragment extends Fragment {
         View view=View.inflate(getContext(), R.layout.wd,null);
         ImageView compile = view.findViewById(R.id.iv_compile);
         ImageView she = view.findViewById(R.id.shezhi);
-        TextView tui = view.findViewById(R.id.my_tui);
         compile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-            }
-        });
-        she.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ModificationActivity.class);
+                Intent intent = new Intent(getActivity(), CompileActivity.class);
                 getActivity().startActivity(intent);
             }
         });
-        tui.setOnClickListener(new View.OnClickListener() {
-            @Override
+        she.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity(), ModificationActivity.class);
+                getActivity().startActivity(intent);
             }
         });
         return view;

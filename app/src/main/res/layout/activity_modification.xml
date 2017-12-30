@@ -346,19 +346,11 @@
         android:id="@+id/my_tui"
         android:gravity="center"
         />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="15dp"
-        android:background="#d9d6d6"
-        />
     <ImageView
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@mipmap/tui"
         />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#a09999"
-        />
+
 </LinearLayout>
