@@ -22,6 +22,8 @@ import com.video.Kanyleo.R;
 public class MyFragment extends Fragment {
 
     private TextView name;
+    private ImageView ivgeqian;
+    private TextView tvgeqian;
 
     @Nullable
     @Override
@@ -30,6 +32,8 @@ public class MyFragment extends Fragment {
         ImageView compile = view.findViewById(R.id.iv_compile);
         ImageView she = view.findViewById(R.id.shezhi);
         name = view.findViewById(R.id.name);
+        tvgeqian = view.findViewById(R.id.tv_gexing);
+        ivgeqian = view.findViewById(R.id.iv_gexing);
         compile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,9 +56,11 @@ public class MyFragment extends Fragment {
         //更改名字
         if (resultCode==2){
             String names = data.getStringExtra("name");
+            String geqians = data.getStringExtra("geqian");
+            ivgeqian.setVisibility(View.GONE);
+            tvgeqian.setVisibility(View.VISIBLE);
+            tvgeqian.setText(geqians);
             name.setText(names);
-
-
         }
     }
 }

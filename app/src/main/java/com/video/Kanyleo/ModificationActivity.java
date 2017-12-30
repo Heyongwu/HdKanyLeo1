@@ -3,6 +3,7 @@ package com.video.Kanyleo;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -18,6 +19,9 @@ public class ModificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modification);
+        //隐藏标题栏
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.hide();
         TextView tui = findViewById(R.id.my_tui);
         ImageView tui02 = findViewById(R.id.my_back2);
         tui02.setOnClickListener(new View.OnClickListener() {

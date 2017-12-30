@@ -111,9 +111,16 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/iv_individuality"
+            android:id="@+id/iv_gexing"
             android:layout_below="@+id/iv_compile"
             android:background="@mipmap/geqian"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_gexing"
+            android:layout_below="@+id/iv_compile"
+            android:visibility="gone"
+            />
     </RelativeLayout>
     <ImageView
         android:layout_width="match_parent"
