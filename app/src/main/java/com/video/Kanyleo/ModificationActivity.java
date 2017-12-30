@@ -31,8 +31,6 @@ public class ModificationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //    通过AlertDialog.Builder这个类来实例化我们的一个AlertDialog的对象
                 AlertDialog.Builder builder = new AlertDialog.Builder(ModificationActivity.this);
-                //    设置Title的图标
-                builder.setIcon(R.mipmap.ic_launcher_round);
                 //    设置Title的内容
                 builder.setTitle("退出操作");
                 //    设置Content来显示一个信息

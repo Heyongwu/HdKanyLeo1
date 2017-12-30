@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.video.Kanyleo.CompileActivity;
 import com.video.Kanyleo.ModificationActivity;
 import com.video.Kanyleo.R;
 
@@ -27,11 +28,11 @@ public class MyFragment extends Fragment {
         compile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity(), CompileActivity.class);
+                getActivity().startActivity(intent);
             }
         });
         she.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ModificationActivity.class);
                 getActivity().startActivity(intent);
