@@ -1,5 +1,6 @@
 package com.video.Kanyleo.net;
 
+import com.video.Kanyleo.bean.CityBean;
 import com.video.Kanyleo.bean.VoBean;
 import com.video.Kanyleo.utils.Api;
 
@@ -15,4 +16,7 @@ public interface ApiService {
 
     @GET(Api.VIDEO)
     Flowable<VoBean> getVideo(@Query("min_time") int min);
+    @GET(Api.CITY)
+    Flowable<CityBean> getCity(@Query("min_time") int min);
+
 }
