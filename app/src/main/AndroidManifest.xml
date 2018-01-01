@@ -24,7 +24,7 @@
         <activity android:name=".LoginNRActivity" />
         <activity android:name=".setting.MyLoginActivity" />
         <activity android:name=".setting.MyRegisterActivity" />
-        <activity android:name=".view.VideoPackage.VideoPlay.PlayVideoActivity" />
+        <activity android:name=".video.PlayVideoActivity" />
         <activity android:name=".ModificationActivity" />
         <activity android:name=".CompileActivity"></activity>
     </application>

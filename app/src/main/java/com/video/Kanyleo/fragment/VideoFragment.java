@@ -7,12 +7,13 @@ import android.support.v7.widget.GridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.video.Kanyleo.R;
-import com.video.Kanyleo.adapter.VideoAdapter;
+import com.video.Kanyleo.video.VideoAdapter;
 import com.video.Kanyleo.bean.VoBean;
-import com.video.Kanyleo.presenter.VideoPresenter;
+import com.video.Kanyleo.video.VideoPresenter;
 import com.video.Kanyleo.view.IVideoView;
 
 import java.util.ArrayList;
@@ -35,8 +36,6 @@ public class VideoFragment extends Fragment implements IVideoView {
     private List<VoBean.DataBeanX.DataBean> list;
     private VideoAdapter videoAdapter;
     private VideoPresenter videoPresenter;
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -44,9 +43,13 @@ public class VideoFragment extends Fragment implements IVideoView {
         videoPresenter = new VideoPresenter(this);
         videoPresenter.showVideo(min);
         unbinder = ButterKnife.bind(this, view);
-
+        //允许刷新，加载更多
+        rv.setPullRefreshEnabled(true);
+        rv.setLoadingMoreEnabled(true);
         return view;
     }
+
+
 
 
     @Override
@@ -55,18 +58,17 @@ public class VideoFragment extends Fragment implements IVideoView {
         list.addAll(splist);
         rv.setLayoutManager(new GridLayoutManager(getContext(),2));
         //调用Adapter展示数据，这个判断是为了不重复创建MyAdapter的对象
-        if (videoAdapter==null){
+
             videoAdapter = new VideoAdapter(getContext(),splist);
             rv.setAdapter(videoAdapter);
-        }else {
-            videoAdapter.notifyDataSetChanged();
-        }
+
         rv.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
                 splist.clear();
-                videoPresenter.showVideo(min);
                 min++;
+                videoPresenter.showVideo(min+1);
+
                 videoAdapter.notifyDataSetChanged();
                 rv.refreshComplete();
 
@@ -74,9 +76,12 @@ public class VideoFragment extends Fragment implements IVideoView {
 
             @Override
             public void onLoadMore() {
-                videoPresenter.showVideo(min);
                 min++;
-                rv.loadMoreComplete();
+                Toast.makeText(getContext(),"加载更多...."+min,Toast.LENGTH_SHORT).show();
+                videoPresenter.showVideo(min);
+                videoAdapter.notifyDataSetChanged();
+
+//                rv.loadMoreComplete();
             }
         });
 

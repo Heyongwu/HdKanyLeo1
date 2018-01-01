@@ -1,4 +1,4 @@
-package com.video.Kanyleo.model;
+package com.video.Kanyleo.video;
 
 import com.video.Kanyleo.bean.VoBean;
 import com.video.Kanyleo.utils.OnNetListener;

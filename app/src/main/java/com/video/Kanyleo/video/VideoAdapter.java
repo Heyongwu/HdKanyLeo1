@@ -1,4 +1,4 @@
-package com.video.Kanyleo.adapter;
+package com.video.Kanyleo.video;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,6 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.video.Kanyleo.R;
 import com.video.Kanyleo.bean.VoBean;
-import com.video.Kanyleo.view.VideoPackage.VideoPlay.PlayVideoActivity;
 
 import java.util.List;
 

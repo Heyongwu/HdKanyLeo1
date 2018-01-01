@@ -19,6 +19,7 @@ public class CityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=View.inflate(getContext(), R.layout.tc,null);
+
         return view;
     }
 }

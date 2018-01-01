@@ -1,8 +1,6 @@
-package com.video.Kanyleo.presenter;
+package com.video.Kanyleo.video;
 
 import com.video.Kanyleo.bean.VoBean;
-import com.video.Kanyleo.model.IVideoModel;
-import com.video.Kanyleo.model.VideoModel;
 import com.video.Kanyleo.utils.OnNetListener;
 import com.video.Kanyleo.view.IVideoView;
 
