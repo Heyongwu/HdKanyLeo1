@@ -62,92 +62,69 @@
         android:layout_height="1dp"
         android:background="#ddd9d9"
         />
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="40dp"
         android:id="@+id/my_tou"
         >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="昵称"
-            android:layout_gravity="center"
+            android:layout_centerVertical="true"
             android:textSize="20dp"
+            android:id="@+id/ni"
             />
 
         <EditText
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/ni"
             android:id="@+id/bian_name"
             android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:background="@null"/>
+    </RelativeLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#ddd9d9"
         />
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
         android:id="@+id/my_yhuname"
         >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="用户名"
-            android:layout_weight="1"
-            android:layout_gravity="center"
+            android:text="火山号"
             android:textSize="20dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/huo"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="党臻涛"
-            android:layout_gravity="center"
+            android:text="40045041"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/huo"
             />
         <ImageView
             android:layout_width="13dp"
             android:layout_height="30dp"
             android:background="@mipmap/hahaha"
-            android:layout_gravity="center"
             android:layout_marginRight="4dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
             />
-    </LinearLayout>
+    </RelativeLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#ddd9d9"
         />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:id="@+id/my_nickname3"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="昵称"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:textSize="20dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="党臻涛"
-            android:layout_gravity="center"
-            />
-        <ImageView
-            android:layout_width="13dp"
-            android:layout_height="30dp"
-            android:background="@mipmap/hahaha"
-            android:layout_gravity="center"
-            android:layout_marginRight="4dp"
-            />
-    </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -214,7 +191,14 @@
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="5dp"
         android:background="#ddd9d9"
+        />
+    <EditText
+        android:hint="有趣的个性签名会吸引更多的粉丝~"
+        android:id="@+id/geqian"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@null"
         />
 </LinearLayout>
