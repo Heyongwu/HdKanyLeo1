@@ -32,10 +32,12 @@ public class MainActivity extends AppCompatActivity {
                 if(isLogin==true) {
                     Intent intent = new Intent(MainActivity.this, LoginNRActivity.class);
                     startActivity(intent);
+                    finish();
                     return ;
                 }else if(isLogin==false){
                     Intent intent = new Intent(MainActivity.this, PrimaryActivity.class);
                     startActivity(intent);
+                    finish();
                     return;
                 }
                 handler.postDelayed(this,1000);
