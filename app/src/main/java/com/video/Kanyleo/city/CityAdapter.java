@@ -34,7 +34,7 @@ public class CityAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolder>
 
     @Override
     public XRecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view=View.inflate(context, R.layout.sp_item,null);
+        View view=View.inflate(context, R.layout.video_item,null);
         return new MyViewHolder(view);
     }
 

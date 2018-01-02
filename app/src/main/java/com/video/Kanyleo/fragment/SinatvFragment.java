@@ -18,7 +18,7 @@ public class SinatvFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=View.inflate(getContext(), R.layout.zb,null);
+        View view=View.inflate(getContext(), R.layout.sinatv,null);
 
         return view;
     }

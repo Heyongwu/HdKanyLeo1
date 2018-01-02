@@ -28,7 +28,7 @@ public class MyFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=View.inflate(getContext(), R.layout.wd,null);
+        View view=View.inflate(getContext(), R.layout.my,null);
         ImageView compile = view.findViewById(R.id.iv_compile);
         ImageView she = view.findViewById(R.id.shezhi);
         name = view.findViewById(R.id.name);

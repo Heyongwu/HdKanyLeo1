@@ -37,7 +37,7 @@ public class CityFragment extends Fragment implements ICityActivity{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = View.inflate(getContext(), R.layout.tc, null);
+        View view = View.inflate(getContext(), R.layout.city, null);
 
         cityPresenter = new CityPresenter(this);
         cityPresenter.showCity(min);

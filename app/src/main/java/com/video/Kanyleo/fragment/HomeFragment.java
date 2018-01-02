@@ -29,7 +29,7 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view=View.inflate(getContext(), R.layout.sy,null);
+        view=View.inflate(getContext(), R.layout.home,null);
         initView();
         tbLoginAdapter=new TbLoginAdapter(getChildFragmentManager());
         mLtb.setupWithViewPager(mLvp);

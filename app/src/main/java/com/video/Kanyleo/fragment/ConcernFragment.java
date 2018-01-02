@@ -18,7 +18,7 @@ public class ConcernFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=View.inflate(getContext(), R.layout.gz,null);
+        View view=View.inflate(getContext(), R.layout.concern,null);
         return view;
     }
 }
