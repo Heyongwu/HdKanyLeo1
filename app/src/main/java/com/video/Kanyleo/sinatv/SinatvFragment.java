@@ -36,13 +36,13 @@ public class SinatvFragment extends Fragment  implements ISinaTvActivity {
         String s2 = list.get(2);
         String s3 = list.get(3);
         String s4 = list.get(4);
-        List<String> img=new ArrayList<>();
+        List<String> img=new ArrayList<String>();
         img.add(s);
         img.add(s1);
         img.add(s2);
         img.add(s3);
         img.add(s4);
-        banner.setImages(img);
+        banner.setImages(list);
         banner.start();
 
     }
