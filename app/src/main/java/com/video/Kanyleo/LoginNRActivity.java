@@ -64,7 +64,7 @@ public class LoginNRActivity extends AppCompatActivity implements BottomNavigati
         bottomNavigationBar
                 .addItem(new BottomNavigationItem(R.mipmap.dianpu, "首页"))
                 .addItem(new BottomNavigationItem(R.mipmap.normalheart, "关注"))
-                .addItem(new BottomNavigationItem(R.drawable.circle,"  "))
+                .addItem(new BottomNavigationItem(R.mipmap.shopcart_add_red,"拍摄"))
                 .addItem(new BottomNavigationItem(R.mipmap.dpj, "消息"))
                 .addItem(new BottomNavigationItem(R.mipmap.a_o, "我的"))
                 .setFirstSelectedPosition(lastSelectedPosition)
