@@ -17,7 +17,6 @@ public class ImgApp2 extends Application {
     public void onCreate() {
         super.onCreate();
         Fresco.initialize(this);
-
         sp = getSharedPreferences("UserID", Context.MODE_APPEND);
         edit = sp.edit();
         ImageLoaderConfiguration build = new ImageLoaderConfiguration.Builder(this).build();
