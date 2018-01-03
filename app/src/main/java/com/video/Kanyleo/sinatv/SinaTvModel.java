@@ -1,7 +1,7 @@
 package com.video.Kanyleo.sinatv;
 
-import com.video.Kanyleo.bean.LiveBean1;
 import com.video.Kanyleo.bean.LiveBean2;
+import com.video.Kanyleo.bean.LiveBean3;
 import com.video.Kanyleo.net.ApiService;
 import com.video.Kanyleo.net.RetrofitHelper;
 import com.video.Kanyleo.utils.OnNetListener;
@@ -25,7 +25,6 @@ public class SinaTvModel implements ISinaTvModel {
                 .subscribe(new Consumer<LiveBean2>() {
                     @Override
                     public void accept(LiveBean2 cityBean) throws Exception {
-
                         onNetListener.onSuccess(cityBean);
                     }
                 });
@@ -33,7 +32,16 @@ public class SinaTvModel implements ISinaTvModel {
 
 
     @Override
-    public void showLive(OnNetListener<LiveBean1> onNetListener, int min) {
-
+    public void showLive(final OnNetListener<LiveBean3> onNetListener, int min) {
+        ApiService serviceAPI = RetrofitHelper.getServiceAPI();
+        Flowable<LiveBean3> live = serviceAPI.getLive(min);
+        live.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<LiveBean3>() {
+                    @Override
+                    public void accept(LiveBean3 liveBean1) throws Exception {
+                        onNetListener.onSuccess(liveBean1);
+                    }
+                });
     }
 }

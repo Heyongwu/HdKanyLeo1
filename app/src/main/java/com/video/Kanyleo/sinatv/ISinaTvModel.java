@@ -1,7 +1,7 @@
 package com.video.Kanyleo.sinatv;
 
-import com.video.Kanyleo.bean.LiveBean1;
 import com.video.Kanyleo.bean.LiveBean2;
+import com.video.Kanyleo.bean.LiveBean3;
 import com.video.Kanyleo.utils.OnNetListener;
 
 /**
@@ -10,5 +10,5 @@ import com.video.Kanyleo.utils.OnNetListener;
 
 public interface ISinaTvModel {
     void showBanner(OnNetListener<LiveBean2> onNetListener, int min);
-    void showLive(OnNetListener<LiveBean1> onNetListener, int min);
+    void showLive(OnNetListener<LiveBean3> onNetListener, int min);
 }

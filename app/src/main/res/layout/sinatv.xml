@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <LinearLayout
         android:background="@color/qianhui"
         android:layout_width="match_parent"
@@ -46,5 +47,54 @@
         android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="150dp"/>
+    <RelativeLayout
+        android:gravity="center_vertical"
 
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <ImageView
+            android:layout_marginLeft="5dp"
+            android:background="@mipmap/trophy"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+        <TextView
+            android:gravity="center"
+            android:layout_marginLeft="30dp"
+            android:text="金主周榜"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp" />
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="100dp"
+            android:background="@mipmap/s1"
+            android:id="@+id/sinatv_sdv1"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="70dp"
+            android:background="@mipmap/s2"
+            android:id="@+id/sinatv_sdv2"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/sinatv_sdv3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignTop="@+id/sinatv_sdv2"
+            android:layout_toLeftOf="@+id/simpleDraweeView"
+            android:layout_toStartOf="@+id/simpleDraweeView"
+            android:background="@mipmap/s3" />
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/youhu"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/simpleDraweeView" />
+    </RelativeLayout>
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/sinatv_rlv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

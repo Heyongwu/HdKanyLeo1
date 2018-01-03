@@ -1,6 +1,7 @@
 package com.video.Kanyleo.sinatv;
 
 import com.video.Kanyleo.bean.LiveBean2;
+import com.video.Kanyleo.bean.LiveBean3;
 import com.video.Kanyleo.utils.Api;
 import com.video.Kanyleo.utils.OnNetListener;
 
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class SinaTvPrecenter {
     private ISinaTvActivity iSinaTvActivity;
-    private final ISinaTvModel isinaTvModel;
+    private  ISinaTvModel isinaTvModel;
 
     public SinaTvPrecenter(ISinaTvActivity iSinaTvActivity) {
         this.iSinaTvActivity = iSinaTvActivity;
@@ -36,6 +37,25 @@ public class SinaTvPrecenter {
                 img.add(Api.s4);
                 img.add(Api.s5);
                 iSinaTvActivity.showBanner(img);
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+
+            }
+        },min);
+    }
+    public void shwoLive(int min){
+        isinaTvModel.showLive(new OnNetListener<LiveBean3>() {
+            @Override
+            public void onSuccess(LiveBean3 liveBean1) {
+                List<LiveBean3.DataBeanX> data = liveBean1.getData();
+                List<LiveBean3.DataBeanX.DataBean.OwnerBean> list = new ArrayList<>();
+                for (int i = 0; i < data.size(); i++) {
+                    LiveBean3.DataBeanX.DataBean.OwnerBean owner = data.get(i).getData().getOwner();
+                    list.add(owner);
+                }
+                iSinaTvActivity.showLive(list);
             }
 
             @Override
