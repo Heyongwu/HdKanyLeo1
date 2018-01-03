@@ -12,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.video.Kanyleo.fragment.SinatvFragment;
+import com.video.Kanyleo.sinatv.SinatvFragment;
 import com.video.Kanyleo.setting.MyLoginActivity;
 import com.video.Kanyleo.video.VideoFragment;
 
