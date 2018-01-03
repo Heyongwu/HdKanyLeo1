@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.video.Kanyleo.R;
 import com.video.Kanyleo.city.CityFragment;
+import com.video.Kanyleo.sinatv.SinatvFragment;
 import com.video.Kanyleo.video.VideoFragment;
 
 
