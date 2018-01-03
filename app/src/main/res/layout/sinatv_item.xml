@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="400dp">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/live_sdv"
+        android:layout_width="match_parent"
+        android:layout_height="400dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="直播中"
+        android:textColor="@color/white_c"
+        android:layout_alignParentRight="true"
+        />
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/live_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_c"
+            android:textSize="20sp"
+            android:text="昵称"
+            />
+        <TextView
+            android:id="@+id/live_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_c"
+            android:textSize="15sp"
+            android:text="地点和观看人数"
+            />
+
+    </LinearLayout>
+</RelativeLayout>
