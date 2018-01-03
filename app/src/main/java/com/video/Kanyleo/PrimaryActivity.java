@@ -12,8 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.video.Kanyleo.mine.MyLoginActivity;
 import com.video.Kanyleo.sinatv.SinatvFragment;
-import com.video.Kanyleo.setting.MyLoginActivity;
 import com.video.Kanyleo.video.VideoFragment;
 
 public class PrimaryActivity extends AppCompatActivity {
@@ -40,6 +40,7 @@ public class PrimaryActivity extends AppCompatActivity {
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(PrimaryActivity.this, MyLoginActivity.class);
                 startActivity(intent);
             }

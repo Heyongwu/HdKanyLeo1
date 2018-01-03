@@ -24,10 +24,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lg_et1"
-        android:hint="请输入账号"/>
+        android:hint="请输入账号"
+        android:phoneNumber="true"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:password="true"
         android:id="@+id/lg_et2"
         android:hint="请输入密码"/>
     <LinearLayout

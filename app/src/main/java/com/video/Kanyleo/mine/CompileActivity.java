@@ -1,4 +1,4 @@
-package com.video.Kanyleo;
+package com.video.Kanyleo.mine;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.video.Kanyleo.R;
 
 public class CompileActivity extends AppCompatActivity {
 
@@ -39,6 +41,7 @@ public class CompileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String names = CompileActivity.this.name.getText().toString();
                 String geqians = CompileActivity.this.geqian.getText().toString();
+
                 intent.putExtra("geqian",geqians);
                 intent.putExtra("name",names);
                 setResult(2,intent);

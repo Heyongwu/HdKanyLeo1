@@ -1,4 +1,4 @@
-package com.video.Kanyleo.setting;
+package com.video.Kanyleo.mine;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +11,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.video.Kanyleo.LoginNRActivity;
 import com.video.Kanyleo.R;
+import com.video.Kanyleo.setting.IloginActivity;
+import com.video.Kanyleo.setting.ImgApp2;
+import com.video.Kanyleo.setting.LoginPresenter;
+import com.video.Kanyleo.setting.MyRegisterActivity;
+import com.video.Kanyleo.LoginNRActivity;
 
 
 public class MyLoginActivity extends AppCompatActivity implements IloginActivity,View.OnClickListener{

@@ -1,4 +1,4 @@
-package com.video.Kanyleo.fragment;
+package com.video.Kanyleo.mine;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.video.Kanyleo.CompileActivity;
-import com.video.Kanyleo.ModificationActivity;
 import com.video.Kanyleo.R;
+import com.video.Kanyleo.setting.ImgApp2;
 
 
 /**
@@ -34,6 +33,15 @@ public class MyFragment extends Fragment {
         name = view.findViewById(R.id.name);
         tvgeqian = view.findViewById(R.id.tv_gexing);
         ivgeqian = view.findViewById(R.id.iv_gexing);
+        String nickname = ImgApp2.sp.getString("nickname", "");
+        name.setText(nickname+"");
+            String geqians = ImgApp2.sp.getString("geqian", "");
+            tvgeqian.setText(geqians + "");
+            if(geqians!=null){
+                ivgeqian.setVisibility(View.GONE);
+                tvgeqian.setVisibility(View.VISIBLE);
+            }
+
         compile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,9 +64,13 @@ public class MyFragment extends Fragment {
         //更改名字
         if (resultCode==2){
             String names = data.getStringExtra("name");
+            ImgApp2.edit.putString("nickname",names);
+            ImgApp2.edit.commit();
             String geqians = data.getStringExtra("geqian");
             ivgeqian.setVisibility(View.GONE);
             tvgeqian.setVisibility(View.VISIBLE);
+            ImgApp2.edit.putString("geqian",geqians);
+            ImgApp2.edit.commit();
             tvgeqian.setText(geqians);
             name.setText(names);
         }

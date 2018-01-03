@@ -22,11 +22,11 @@
         </activity>
         <activity android:name=".PrimaryActivity" />
         <activity android:name=".LoginNRActivity" />
-        <activity android:name=".setting.MyLoginActivity" />
+        <activity android:name=".mine.MyLoginActivity" />
         <activity android:name=".setting.MyRegisterActivity" />
         <activity android:name=".video.PlayVideoActivity" />
-        <activity android:name=".ModificationActivity" />
-        <activity android:name=".CompileActivity"></activity>
+        <activity android:name=".mine.ModificationActivity" />
+        <activity android:name=".mine.CompileActivity"></activity>
     </application>
 
 </manifest>

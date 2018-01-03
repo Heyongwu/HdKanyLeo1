@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.video.Kanyleo.ModificationActivity">
+    tools:context="com.video.Kanyleo.mine.ModificationActivity">
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"

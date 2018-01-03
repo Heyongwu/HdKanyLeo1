@@ -12,7 +12,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.video.Kanyleo.fragment.AppendFragment;
 import com.video.Kanyleo.fragment.ConcernFragment;
 import com.video.Kanyleo.fragment.HomeFragment;
-import com.video.Kanyleo.fragment.MyFragment;
+import com.video.Kanyleo.mine.MyFragment;
 import com.video.Kanyleo.fragment.NewsFragment;
 
 public class LoginNRActivity extends AppCompatActivity implements BottomNavigationBar.OnTabSelectedListener {

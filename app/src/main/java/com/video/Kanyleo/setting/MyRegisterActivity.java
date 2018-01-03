@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.video.Kanyleo.R;
+import com.video.Kanyleo.mine.MyLoginActivity;
 
 
 public class MyRegisterActivity extends AppCompatActivity implements IRegisterActivity , View.OnClickListener{

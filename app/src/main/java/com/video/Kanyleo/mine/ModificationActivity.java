@@ -1,4 +1,4 @@
-package com.video.Kanyleo;
+package com.video.Kanyleo.mine;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,7 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.video.Kanyleo.R;
 import com.video.Kanyleo.setting.ImgApp2;
+import com.video.Kanyleo.PrimaryActivity;
 
 public class ModificationActivity extends AppCompatActivity {
 
