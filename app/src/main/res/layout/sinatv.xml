@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:background="@color/qianhui"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/sinatv_llbig"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@mipmap/ic_launcher"/>
+            <TextView
+                android:text="大图"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/sinatv_llsmall"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@mipmap/ic_launcher"/>
+            <TextView
+                android:text="小图"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <com.youth.banner.Banner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"/>
+
+</LinearLayout>

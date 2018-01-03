@@ -33,6 +33,7 @@ public class ModificationActivity extends AppCompatActivity {
         tui.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //    通过AlertDialog.Builder这个类来实例化我们的一个AlertDialog的对象
                 AlertDialog.Builder builder = new AlertDialog.Builder(ModificationActivity.this);
                 //    设置Title的内容
