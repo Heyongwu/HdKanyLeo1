@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:name=".setting.ImgApp2"
         android:allowBackup="true"
@@ -26,7 +25,8 @@
         <activity android:name=".setting.MyRegisterActivity" />
         <activity android:name=".video.PlayVideoActivity" />
         <activity android:name=".mine.ModificationActivity" />
-        <activity android:name=".mine.CompileActivity"></activity>
+        <activity android:name=".mine.CompileActivity" />
+        <activity android:name=".sinatv.SeekActivity"></activity>
     </application>
 
 </manifest>
