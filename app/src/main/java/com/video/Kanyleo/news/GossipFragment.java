@@ -1,4 +1,4 @@
-package com.video.Kanyleo.fragment;
+package com.video.Kanyleo.news;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,16 +9,15 @@ import android.view.ViewGroup;
 
 import com.video.Kanyleo.R;
 
-
 /**
- * Created by len on 2017/12/26.
+ * Created by DangByMySide on 2018/1/4.
  */
 
-public class NewsFragment extends Fragment {
+public class GossipFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=View.inflate(getContext(), R.layout.news,null);
+        View view=View.inflate(getContext(), R.layout.gossip,null);
         return view;
     }
 }
