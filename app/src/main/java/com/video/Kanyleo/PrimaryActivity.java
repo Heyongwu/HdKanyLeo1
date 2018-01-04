@@ -45,6 +45,13 @@ public class PrimaryActivity extends AppCompatActivity {
         tbAdapter = new TbAdapter(getSupportFragmentManager());
         mTb.setupWithViewPager(mVp);
         mVp.setAdapter(tbAdapter);
+        sousuo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PrimaryActivity.this, SeekActivity.class);
+                startActivity(intent);
+            }
+        });
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,13 +66,7 @@ public class PrimaryActivity extends AppCompatActivity {
         mTb = (TabLayout) findViewById(R.id.tb);
         mVp = (ViewPager) findViewById(R.id.vp);
         mLogin = (TextView) findViewById(R.id.login);
-        sousuo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PrimaryActivity.this, SeekActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
     class TbAdapter extends FragmentPagerAdapter {

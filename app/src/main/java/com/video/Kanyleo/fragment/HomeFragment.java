@@ -1,5 +1,6 @@
 package com.video.Kanyleo.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -10,11 +11,17 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.video.Kanyleo.R;
 import com.video.Kanyleo.city.CityFragment;
+import com.video.Kanyleo.sinatv.SeekActivity;
 import com.video.Kanyleo.sinatv.SinatvFragment;
 import com.video.Kanyleo.video.VideoFragment;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 
 /**
@@ -22,25 +29,46 @@ import com.video.Kanyleo.video.VideoFragment;
  */
 
 public class HomeFragment extends Fragment {
+    @BindView(R.id.sousuo)
+    ImageView sousuo;
+    Unbinder unbinder;
     private TabLayout mLtb;
     private ViewPager mLvp;
-    String[] itemName = {"直播","视频","同城"};
+    String[] itemName = {"直播", "视频", "同城"};
     TbLoginAdapter tbLoginAdapter;
     View view;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view=View.inflate(getContext(), R.layout.home,null);
+        view = View.inflate(getContext(), R.layout.home, null);
         initView();
-        tbLoginAdapter=new TbLoginAdapter(getChildFragmentManager());
+        tbLoginAdapter = new TbLoginAdapter(getChildFragmentManager());
         mLtb.setupWithViewPager(mLvp);
         mLvp.setAdapter(tbLoginAdapter);
+        unbinder = ButterKnife.bind(this, view);
+        sousuo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SeekActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
+
     private void initView() {
         mLtb = view.findViewById(R.id.ltb);
         mLvp = view.findViewById(R.id.lvp);
+
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
     class TbLoginAdapter extends FragmentPagerAdapter {
 
         public TbLoginAdapter(FragmentManager fm) {
@@ -49,7 +77,7 @@ public class HomeFragment extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
-            switch (position){
+            switch (position) {
                 //注意：activity中导入的包必须和碎片一致 v4包
                 case 0:
                     return new SinatvFragment();

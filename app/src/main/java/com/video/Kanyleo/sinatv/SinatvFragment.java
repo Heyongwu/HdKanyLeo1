@@ -45,6 +45,7 @@ public class SinatvFragment extends Fragment implements ISinaTvActivity {
         mSmall = (LinearLayout) view.findViewById(R.id.small);
         sinaTvPrecenter.shwoLive(min);
         sinaTvPrecenter.showBanner(min);
+
         unbinder = ButterKnife.bind(this, view);
         return view;
     }

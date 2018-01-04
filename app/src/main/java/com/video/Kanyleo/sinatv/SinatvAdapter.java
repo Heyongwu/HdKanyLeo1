@@ -118,7 +118,6 @@ public class SinatvAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolde
 //            myViewHolder.place.setText(ownerBean.get);
         }
     }
-
     @Override
     public int getItemCount() {
         return list.size();
