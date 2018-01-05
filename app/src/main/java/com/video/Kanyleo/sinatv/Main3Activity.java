@@ -1,6 +1,7 @@
 package com.video.Kanyleo.sinatv;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -34,6 +35,32 @@ public class Main3Activity extends AppCompatActivity {
         ijvideo.setMediaController(controller);
         ijvideo.setVideoURI(Uri.parse(ss));
         ijvideo.start();
+
     }
+    //    在生命周期中设置 暂停
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ijvideo.pause();
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        IjkMediaPlayer.native_profileEnd();
+        finish();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ijvideo.resume();
+    }
+
 
 }
