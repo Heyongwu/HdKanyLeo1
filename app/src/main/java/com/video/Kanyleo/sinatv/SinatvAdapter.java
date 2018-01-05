@@ -1,6 +1,7 @@
 package com.video.Kanyleo.sinatv;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
@@ -23,7 +24,7 @@ import java.util.List;
 
 public class SinatvAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolder>{
     private Context context;
-    private List<LiveBean3.DataBeanX.DataBean.OwnerBean> list;
+    private List<LiveBean3.DataBeanX.DataBean> list;
     OnItemClickListener listener;
     public static final int TYPE_HEADER=0;
     public static final int TYPE_ONE=1;
@@ -35,7 +36,7 @@ public class SinatvAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolde
     public void setOnItemClick(OnItemClickListener listener){
         this.listener=listener;
     }
-    public SinatvAdapter(Context context, List<LiveBean3.DataBeanX.DataBean.OwnerBean> list) {
+    public SinatvAdapter(Context context, List<LiveBean3.DataBeanX.DataBean> list) {
         this.context = context;
         this.list = list;
     }
@@ -56,7 +57,9 @@ public class SinatvAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolde
     }
     @Override
     public void onBindViewHolder(XRecyclerView.ViewHolder holder, int position) {
-        LiveBean3.DataBeanX.DataBean.OwnerBean ownerBean = list.get(position);
+//        LiveBean3.DataBeanX.DataBean.OwnerBean ownerBean = list.get(position);
+        LiveBean3.DataBeanX.DataBean.OwnerBean ownerBean = list.get(position).getOwner();
+        final LiveBean3.DataBeanX.DataBean dataBean = list.get(position);
         if(holder instanceof BnViewHolder){
             int type = getItemViewType(position);
             if (type == TYPE_HEADER) {
@@ -111,11 +114,22 @@ public class SinatvAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolde
 
         }
         if(holder instanceof MyViewHolder){
+
+            int user_count = dataBean.getUser_count();
             MyViewHolder myViewHolder = (MyViewHolder) holder;
             myViewHolder.live_sdv.setImageURI(Uri.parse(ownerBean.getAvatar_thumb().getUrl_list().get(0)));
             myViewHolder.name.setText(ownerBean.getNickname());
+            myViewHolder.place.setText(dataBean.getUser_count()+"人");
 
-//            myViewHolder.place.setText(ownerBean.get);
+
+            myViewHolder.live_sdv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, PlaySinatvActivity.class);
+//                    intent.putExtra("sss",dataBean.getStream_url().getRtmp_pull_url());
+                    context.startActivity(intent);
+                }
+            });
         }
     }
     @Override

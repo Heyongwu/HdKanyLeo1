@@ -45,4 +45,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
 
     compile 'com.youth.banner:banner:1.4.10'
+//    compile 'com.dou361.ijkplayer:jjdxm-ijkplayer:1.0.5'
+    compile 'com.github.leifzhang:IjkLib:0.4.4'
 }

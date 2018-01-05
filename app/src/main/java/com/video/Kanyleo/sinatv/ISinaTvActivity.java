@@ -11,7 +11,7 @@ import java.util.List;
 public interface ISinaTvActivity {
     //banner
     void showBanner(List<String> list);
-    void showLive(List<LiveBean3.DataBeanX.DataBean.OwnerBean> list);
+    void showLive(List<LiveBean3.DataBeanX.DataBean> list);
 
 
 }

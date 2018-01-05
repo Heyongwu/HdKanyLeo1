@@ -10,21 +10,17 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.video.Kanyleo.mine.MyLoginActivity;
-import com.video.Kanyleo.sinatv.SeekActivity;
 import com.video.Kanyleo.sinatv.SinatvFragment;
 import com.video.Kanyleo.video.VideoFragment;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class PrimaryActivity extends AppCompatActivity {
 
-    @BindView(R.id.sousuo)
-    ImageView sousuo;
+
     private TabLayout mTb;
     private ViewPager mVp;
     /**
@@ -45,13 +41,7 @@ public class PrimaryActivity extends AppCompatActivity {
         tbAdapter = new TbAdapter(getSupportFragmentManager());
         mTb.setupWithViewPager(mVp);
         mVp.setAdapter(tbAdapter);
-        sousuo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PrimaryActivity.this, SeekActivity.class);
-                startActivity(intent);
-            }
-        });
+
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

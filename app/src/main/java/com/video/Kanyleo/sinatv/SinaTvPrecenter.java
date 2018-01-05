@@ -47,13 +47,15 @@ public class SinaTvPrecenter {
     }
     public void shwoLive(int min){
         isinaTvModel.showLive(new OnNetListener<LiveBean3>() {
+
+
             @Override
             public void onSuccess(LiveBean3 liveBean1) {
                 List<LiveBean3.DataBeanX> data = liveBean1.getData();
-                List<LiveBean3.DataBeanX.DataBean.OwnerBean> list = new ArrayList<>();
+                List<LiveBean3.DataBeanX.DataBean> list = new ArrayList<>();
                 for (int i = 0; i < data.size(); i++) {
-                    LiveBean3.DataBeanX.DataBean.OwnerBean owner = data.get(i).getData().getOwner();
-                    list.add(owner);
+                    LiveBean3.DataBeanX.DataBean dataBean = data.get(i).getData();
+                    list.add(dataBean);
                 }
                 iSinaTvActivity.showLive(list);
             }

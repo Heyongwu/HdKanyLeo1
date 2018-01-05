@@ -54,7 +54,7 @@ public class SinatvFragment extends Fragment implements ISinaTvActivity {
 
     }
     @Override
-    public void showLive(List<LiveBean3.DataBeanX.DataBean.OwnerBean> list) {
+    public void showLive(List<LiveBean3.DataBeanX.DataBean> list) {
          final SinatvAdapter adapter;
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         sinatvRlv.setLayoutManager(manager);
