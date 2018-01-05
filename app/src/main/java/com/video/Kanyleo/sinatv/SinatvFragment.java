@@ -1,5 +1,6 @@
 package com.video.Kanyleo.sinatv;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -24,7 +25,7 @@ import butterknife.Unbinder;
 /**
  * Created by len on 2017/12/26.
  */
-public class SinatvFragment extends Fragment implements ISinaTvActivity {
+public class SinatvFragment extends Fragment implements ISinaTvActivity{
     @BindView(R.id.sinatv_rlv)
     XRecyclerView sinatvRlv;
     Unbinder unbinder;
@@ -55,6 +56,7 @@ public class SinatvFragment extends Fragment implements ISinaTvActivity {
     }
     @Override
     public void showLive(List<LiveBean3.DataBeanX.DataBean> list) {
+
          final SinatvAdapter adapter;
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         sinatvRlv.setLayoutManager(manager);
@@ -74,10 +76,27 @@ public class SinatvFragment extends Fragment implements ISinaTvActivity {
         });
 //        LinearLayoutManager manager = new LinearLayoutManager(getContext());
 //        sinatvRlv.setLayoutManager(manager);
+        //            intent.putExtra("sss",dataBean.getStream_url().getRtmp_pull_url());
+
         adapter = new SinatvAdapter(getContext(), list);
         sinatvRlv.setAdapter(adapter);
+
+        final List<String> flvlist = new ArrayList<>();
+        for (int i = 0; i < list.size() ; i++) {
+            LiveBean3.DataBeanX.DataBean dataBean = list.get(i);
+            String url = dataBean.getStream_url().getRtmp_pull_url();
+            flvlist.add(url);
+        }
         Banner banner = new Banner(getContext());
         adapter.addheader(banner);
+        adapter.setOnItemClick(new SinatvAdapter.OnItemClickListener() {
+            @Override
+            public void OnItemClick(View view, int position, String url) {
+                Intent intent = new Intent(getContext(), Main3Activity.class);
+                intent.putExtra("ss",url);
+                startActivity(intent);
+            }
+        });
         sinatvRlv.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
@@ -87,7 +106,6 @@ public class SinatvFragment extends Fragment implements ISinaTvActivity {
                 adapter.notifyDataSetChanged();
                 sinatvRlv.refreshComplete();
             }
-
             @Override
             public void onLoadMore() {
                 min++;

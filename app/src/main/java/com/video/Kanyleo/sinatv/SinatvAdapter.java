@@ -1,7 +1,6 @@
 package com.video.Kanyleo.sinatv;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
@@ -29,8 +28,11 @@ public class SinatvAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolde
     public static final int TYPE_HEADER=0;
     public static final int TYPE_ONE=1;
     private View view1;
+
+
+
     public interface OnItemClickListener{
-        public void OnItemClick(View view,int position,String id);
+        public void OnItemClick(View view,int position,String url);
     }
 
     public void setOnItemClick(OnItemClickListener listener){
@@ -40,7 +42,7 @@ public class SinatvAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolde
         this.context = context;
         this.list = list;
     }
-    List<View> listheader=new ArrayList<View>();
+    List<View> listheader=new ArrayList<>();
     public void addheader(View view){
         listheader.add(view);
     }
@@ -56,10 +58,13 @@ public class SinatvAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolde
         }
     }
     @Override
-    public void onBindViewHolder(XRecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(XRecyclerView.ViewHolder holder, final int position) {
+
 //        LiveBean3.DataBeanX.DataBean.OwnerBean ownerBean = list.get(position);
         LiveBean3.DataBeanX.DataBean.OwnerBean ownerBean = list.get(position).getOwner();
+
         final LiveBean3.DataBeanX.DataBean dataBean = list.get(position);
+        final String url = dataBean.getStream_url().getRtmp_pull_url();
         if(holder instanceof BnViewHolder){
             int type = getItemViewType(position);
             if (type == TYPE_HEADER) {
@@ -122,15 +127,17 @@ public class SinatvAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolde
             myViewHolder.place.setText(dataBean.getUser_count()+"人");
 
 
-            myViewHolder.live_sdv.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, PlaySinatvActivity.class);
-//                    intent.putExtra("sss",dataBean.getStream_url().getRtmp_pull_url());
-                    context.startActivity(intent);
-                }
-            });
+
         }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(listener!=null){
+                    listener.OnItemClick(view,position, url);
+                }
+            }
+        });
     }
     @Override
     public int getItemCount() {
@@ -149,7 +156,6 @@ public class SinatvAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolde
         private final SimpleDraweeView live_sdv;
         private final TextView name;
         private final TextView place;
-
         public MyViewHolder(View itemView) {
             super(itemView);
             live_sdv = itemView.findViewById(R.id.live_sdv);
