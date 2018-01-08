@@ -41,7 +41,9 @@ public class VideoAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolder
         String share_title = dataBean.getShare_title();
         String nickname = dataBean.getAuthor().getNickname();
 
-         ((MyViewHolder)holder).sdv.setImageURI(Uri.parse(splist.get(position).getAuthor().getAvatar_large().getUrl_list().get(0)));
+ //        ImageLoader.getInstance().displayImage(splist.get(position).getAuthor().getAvatar_large().getUrl_list().get(0),
+//                ((MyViewHolder)holder).sdv);
+        ((MyViewHolder)holder).sdv.setImageURI(Uri.parse(splist.get(position).getAuthor().getAvatar_large().getUrl_list().get(0)));
 //        ((MyViewHolder)holder).sdv_below.setImageURI(splist.get(position).getAuthor().getAvatar_large().getUrl_list().get(1));
         ((MyViewHolder)holder).name.setText(nickname);
         ((MyViewHolder)holder).place.setText(splist.get(position).getAuthor().getCity());
@@ -73,6 +75,7 @@ public class VideoAdapter extends XRecyclerView.Adapter<XRecyclerView.ViewHolder
            place=itemView.findViewById(R.id.place);
            videoName=itemView.findViewById(R.id.videoName);
            liuyan=itemView.findViewById(R.id.liuyan);
+
 
        }
    }

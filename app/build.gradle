@@ -40,11 +40,11 @@ dependencies {
     compile 'com.ashokvarma.android:bottom-navigation-bar:2.0.2'
     compile 'com.github.bumptech.glide:glide:3.6.0'
     implementation files('libs/universal-image-loader-1.9.5.jar')
-
     compile 'com.jakewharton:butterknife:8.6.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
     compile 'org.greenrobot:eventbus:3.1.1'
     compile 'com.youth.banner:banner:1.4.10'
-//    compile 'com.dou361.ijkplayer:jjdxm-ijkplayer:1.0.5'
+    //    compile 'com.dou361.ijkplayer:jjdxm-ijkplayer:1.0.5'
     compile 'com.github.leifzhang:IjkLib:0.4.4'
+
 }

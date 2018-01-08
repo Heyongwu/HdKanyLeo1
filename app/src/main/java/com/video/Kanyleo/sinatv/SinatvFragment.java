@@ -2,6 +2,8 @@ package com.video.Kanyleo.sinatv;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,7 +11,9 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.video.Kanyleo.R;
@@ -22,6 +26,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import tuesda.walker.circlerefresh.CircleRefreshLayout;
+
 /**
  * Created by len on 2017/12/26.
  */
@@ -35,7 +41,40 @@ public class SinatvFragment extends Fragment implements ISinaTvActivity{
 
     private LinearLayout mLarge;
     private LinearLayout mSmall;
+    private CircleRefreshLayout refreshLayout;
+    private Button mStop;
+    private Handler myHandler = new Handler()
+    {
+        //接收子线程的信息
+        public void handleMessage(Message msg)
+        {
+            //根据接收的消息进行相关操作
+            switch(msg.what){
+                case 0:
+                    refreshLayout.finishRefreshing();
+                    break ;
+            }
 
+
+        }
+    } ;
+    private class MyRunnable implements Runnable
+    {
+        @Override
+        public void run() {
+            try {
+                Thread.sleep(1000);
+                min++;
+                sinaTvPrecenter.shwoLive(min);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Message message = new Message() ;
+            message.what = 0 ;
+            myHandler.sendMessage(message) ;
+        }
+    }
     List<LiveBean3.DataBeanX.DataBean.OwnerBean> ownerlist = new ArrayList<>();
     @Nullable
     @Override
@@ -46,7 +85,7 @@ public class SinatvFragment extends Fragment implements ISinaTvActivity{
         mSmall = (LinearLayout) view.findViewById(R.id.small);
         sinaTvPrecenter.shwoLive(min);
         sinaTvPrecenter.showBanner(min);
-
+        refreshLayout = view.findViewById(R.id.refresh_layout);
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
@@ -97,15 +136,33 @@ public class SinatvFragment extends Fragment implements ISinaTvActivity{
                 startActivity(intent);
             }
         });
+
+        refreshLayout.setOnRefreshListener(
+                new CircleRefreshLayout.OnCircleRefreshListener() {
+                    @Override
+                    public void refreshing() {
+//                        // do something when refresh starts
+                        ownerlist.clear();
+                        MyRunnable myRunnable = new MyRunnable() ;
+                        new Thread(myRunnable).start();
+                        adapter.notifyDataSetChanged();
+//                        Toast.makeText(getContext(), "xiala", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void completeRefresh() {
+                        // do something when refresh complete
+                        min++;
+                        Toast.makeText(getContext(),"刷新成功",Toast.LENGTH_SHORT).show();
+//                        videoPresenter.showVideo(min);
+//                        videoAdapter.notifyDataSetChanged();
+//                        rv.loadMoreComplete();
+
+                    }
+                });
         sinatvRlv.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
-            public void onRefresh() {
-                min++;
-                ownerlist.clear();
-                sinaTvPrecenter.shwoLive(min);
-                adapter.notifyDataSetChanged();
-                sinatvRlv.refreshComplete();
-            }
+            public void onRefresh() {}
             @Override
             public void onLoadMore() {
                 min++;
