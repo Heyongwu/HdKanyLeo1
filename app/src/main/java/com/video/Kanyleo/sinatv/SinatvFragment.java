@@ -13,12 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.video.Kanyleo.R;
 import com.video.Kanyleo.bean.LiveBean3;
 import com.youth.banner.Banner;
+
+import net.steamcrafted.loadtoast.LoadToast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,6 +76,7 @@ public class SinatvFragment extends Fragment implements ISinaTvActivity{
             myHandler.sendMessage(message) ;
         }
     }
+    private LoadToast lt;
     List<LiveBean3.DataBeanX.DataBean.OwnerBean> ownerlist = new ArrayList<>();
     @Nullable
     @Override
@@ -119,7 +121,7 @@ public class SinatvFragment extends Fragment implements ISinaTvActivity{
 
         adapter = new SinatvAdapter(getContext(), list);
         sinatvRlv.setAdapter(adapter);
-
+        lt = new LoadToast(getContext());
         final List<String> flvlist = new ArrayList<>();
         for (int i = 0; i < list.size() ; i++) {
             LiveBean3.DataBeanX.DataBean dataBean = list.get(i);
@@ -153,10 +155,29 @@ public class SinatvFragment extends Fragment implements ISinaTvActivity{
                     public void completeRefresh() {
                         // do something when refresh complete
                         min++;
-                        Toast.makeText(getContext(),"刷新成功",Toast.LENGTH_SHORT).show();
+
 //                        videoPresenter.showVideo(min);
 //                        videoAdapter.notifyDataSetChanged();
 //                        rv.loadMoreComplete();
+
+                        lt.setText("刷新成功");
+                        lt.show();
+                        lt.setBorderColor(getContext().getResources().getColor(R.color.paleturquoise));
+                        lt.setProgressColor(getContext().getResources().getColor(R.color.mediumpurple));
+//                        videoPresenter.showVideo(min);
+//                        videoAdapter.notifyDataSetChanged();
+//                        rv.loadMoreComplete();
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                /**
+                                 *要执行的操作
+                                 */
+                                lt.hide();
+//                        lt.success();
+                            }
+                        }, 1000);//3秒后执行Runnable中的run方法
 
                     }
                 });
@@ -165,10 +186,36 @@ public class SinatvFragment extends Fragment implements ISinaTvActivity{
             public void onRefresh() {}
             @Override
             public void onLoadMore() {
-                min++;
-                sinaTvPrecenter.shwoLive(min);
-                adapter.notifyDataSetChanged();
-                sinatvRlv.loadMoreComplete();
+
+                new Handler().postDelayed(new Runnable(){
+
+                    public void run() {
+                        min++;
+                        sinaTvPrecenter.shwoLive(min);
+                        adapter.notifyDataSetChanged();
+                        sinatvRlv.loadMoreComplete();
+
+                    }
+
+                }, 1000);
+                lt.setText("加载更多");
+                lt.show();
+                lt.setBorderColor(getContext().getResources().getColor(R.color.paleturquoise));
+                lt.setProgressColor(getContext().getResources().getColor(R.color.mediumpurple));
+//                        videoPresenter.showVideo(min);
+//                        videoAdapter.notifyDataSetChanged();
+//                        rv.loadMoreComplete();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        /**
+                         *要执行的操作
+                         */
+                        lt.hide();
+//                        lt.success();
+                    }
+                }, 1000);//3秒后执行Runnable中的run方法
             }
         });
 

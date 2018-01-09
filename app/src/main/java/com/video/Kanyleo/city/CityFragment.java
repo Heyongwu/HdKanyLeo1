@@ -10,11 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.video.Kanyleo.R;
 import com.video.Kanyleo.bean.VoBean;
+
+import net.steamcrafted.loadtoast.LoadToast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,8 +51,6 @@ public class CityFragment extends Fragment implements ICityActivity{
                     refreshLayout.finishRefreshing();
                     break ;
             }
-
-
         }
     } ;
     private class MyRunnable implements Runnable
@@ -71,6 +70,7 @@ public class CityFragment extends Fragment implements ICityActivity{
             myHandler.sendMessage(message) ;
         }
     }
+    private LoadToast lt;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -82,6 +82,7 @@ public class CityFragment extends Fragment implements ICityActivity{
 //        cityRv.setPullRefreshEnabled(true);
 //        cityRv.setLoadingMoreEnabled(true);
         unbinder = ButterKnife.bind(this, view);
+        lt = new LoadToast(getContext());
         return view;
     }
 
@@ -107,7 +108,25 @@ public class CityFragment extends Fragment implements ICityActivity{
 
                     @Override
                     public void completeRefresh() {
-                        Toast.makeText(getContext(),"刷新成功",Toast.LENGTH_SHORT).show();
+
+                        lt.setText("刷新成功");
+                        lt.show();
+                        lt.setBorderColor(getContext().getResources().getColor(R.color.paleturquoise));
+                        lt.setProgressColor(getContext().getResources().getColor(R.color.mediumpurple));
+//                        videoPresenter.showVideo(min);
+//                        videoAdapter.notifyDataSetChanged();
+//                        rv.loadMoreComplete();
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                /**
+                                 *要执行的操作
+                                 */
+                                lt.hide();
+//                        lt.success();
+                            }
+                        }, 1000);//3秒后执行Runnable中的run方法
                     }
                 });
         cityRv.setLoadingListener(new XRecyclerView.LoadingListener() {
@@ -117,10 +136,36 @@ public class CityFragment extends Fragment implements ICityActivity{
             @Override
             public void onLoadMore() {
 //                min++;
-                Toast.makeText(getContext(),"加载更多...."+min,Toast.LENGTH_SHORT).show();
-                cityPresenter.showCity(min);
-                cityAdapter.notifyDataSetChanged();
-                cityRv.loadMoreComplete();
+
+
+                new Handler().postDelayed(new Runnable(){
+
+                    public void run() {
+                        min++;
+                        cityPresenter.showCity(min);
+                        cityAdapter.notifyDataSetChanged();
+                        cityRv.loadMoreComplete();
+                    }
+
+                }, 1000);
+                lt.setText("加载更多");
+                lt.show();
+                lt.setBorderColor(getContext().getResources().getColor(R.color.paleturquoise));
+                lt.setProgressColor(getContext().getResources().getColor(R.color.mediumpurple));
+//                        videoPresenter.showVideo(min);
+//                        videoAdapter.notifyDataSetChanged();
+//                        rv.loadMoreComplete();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        /**
+                         *要执行的操作
+                         */
+                        lt.hide();
+//                        lt.success();
+                    }
+                }, 1000);//3秒后执行Runnable中的run方法
             }
         });
     }

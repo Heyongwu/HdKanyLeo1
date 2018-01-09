@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.video.Kanyleo"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -14,6 +14,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    allprojects {
+        repositories {
+            maven { url 'https://jitpack.io' }
         }
     }
 }
@@ -46,5 +51,7 @@ dependencies {
     compile 'com.youth.banner:banner:1.4.10'
     //    compile 'com.dou361.ijkplayer:jjdxm-ijkplayer:1.0.5'
     compile 'com.github.leifzhang:IjkLib:0.4.4'
-
+    compile 'net.steamcrafted:load-toast:1.0.12'
+    compile 'com.github.CN-ZPH:weibo360panorama:v1.0.1'
+    compile 'com.google.vr:sdk-panowidget:1.80.0'
 }

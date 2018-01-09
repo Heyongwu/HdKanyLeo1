@@ -55,6 +55,7 @@ public class MyFragment extends Fragment {
                 getActivity().startActivity(intent);
             }
         });
+        new Thread().start();
         return view;
     }
 
