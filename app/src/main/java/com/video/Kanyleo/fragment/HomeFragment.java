@@ -1,6 +1,5 @@
 package com.video.Kanyleo.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -15,11 +14,9 @@ import android.widget.ImageView;
 
 import com.video.Kanyleo.R;
 import com.video.Kanyleo.city.CityFragment;
-import com.video.Kanyleo.sinatv.SeekActivity;
 import com.video.Kanyleo.sinatv.SinatvFragment;
 import com.video.Kanyleo.video.VideoFragment;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -29,7 +26,7 @@ import butterknife.Unbinder;
  */
 
 public class HomeFragment extends Fragment {
-    @BindView(R.id.sousuo)
+
     ImageView sousuo;
     Unbinder unbinder;
     private TabLayout mLtb;
@@ -47,13 +44,13 @@ public class HomeFragment extends Fragment {
         mLtb.setupWithViewPager(mLvp);
         mLvp.setAdapter(tbLoginAdapter);
         unbinder = ButterKnife.bind(this, view);
-        sousuo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), SeekActivity.class);
-                startActivity(intent);
-            }
-        });
+//        sousuo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getContext(), SeekActivity.class);
+//                startActivity(intent);
+//            }
+//        });
         return view;
     }
 
