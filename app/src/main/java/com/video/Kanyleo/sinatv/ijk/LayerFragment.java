@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -25,7 +26,12 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.video.Kanyleo.R;
+import com.video.Kanyleo.net.LiveMessage2;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -35,12 +41,19 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 public class LayerFragment extends Fragment implements View.OnClickListener {
-    private Handler handler = new Handler(){
+    @BindView(R.id.sinatv_image)
+    SimpleDraweeView sinatvImage;
+    Unbinder unbinder;
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            switch (msg.what){
+            switch (msg.what) {
                 case 0:
                     break;
             }
@@ -85,15 +98,22 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
      * 数据相关
      */
     private List<View> giftViewCollection = new ArrayList<View>();
-    private List<String> messageData=new LinkedList<>();
+    private List<String> messageData = new LinkedList<>();
     private MessageAdapter messageAdapter;
 
     private Timer timer;
+    private String image;
+    private String fire;
+    private String nickname;
+    private TextView tvqq;
+    private TextView nickname1;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = View.inflate(getActivity(), R.layout.fragment_layer,null);
+        View view = View.inflate(getActivity(), R.layout.fragment_layer, null);
+        unbinder = ButterKnife.bind(this, view);
+        EventBus.getDefault().register(this);
         llpicimage = view.findViewById(R.id.llpicimage);
         rlsentimenttime = view.findViewById(R.id.rlsentimenttime);
         hlvaudience = view.findViewById(R.id.hlvaudience);
@@ -109,6 +129,10 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
         llInputParent = view.findViewById(R.id.llinputparent);
         etInput = view.findViewById(R.id.etInput);
         sendInput = view.findViewById(R.id.sendInput);
+
+        tvqq = view.findViewById(R.id.tvqq);
+        nickname1 = view.findViewById(R.id.nickname);
+
         tvChat.setOnClickListener(this);
         tvSendone.setOnClickListener(this);
         tvSendtwo.setOnClickListener(this);
@@ -119,12 +143,33 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
         outAnim = (TranslateAnimation) AnimationUtils.loadAnimation(getActivity(), R.anim.gift_out);
         giftNumAnim = new NumAnim();
         clearTiming();
+
+
         return view;
     }
+
+    private void initListen() {
+
+        tvqq.setText("火力:" + fire);
+
+        sinatvImage.setImageURI(Uri.parse(image));
+        nickname1.setText(nickname);
+
+    }
+
+    @Subscribe(sticky = true)
+    public void getMes2(LiveMessage2 eventMessage) {
+        image = eventMessage.image;
+        fire = eventMessage.fire;
+        nickname = eventMessage.nickname;
+
+    }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        initListen();
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,11 +180,12 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
                 }
             }
         });
+
         softKeyboardListnenr();
-        for(int x=0; x<20; x++){
-            messageData.add("Johnny: 默认聊天内容"+x);
+        for (int x = 0; x < 20; x++) {
+            messageData.add("Johnny: 默认聊天内容" + x);
         }
-        messageAdapter=new MessageAdapter(getActivity(), messageData);
+        messageAdapter = new MessageAdapter(getActivity(), messageData);
         lvmessage.setAdapter(messageAdapter);
         lvmessage.setSelection(messageData.size());
         hlvaudience.setAdapter(new AudienceAdapter(getActivity()));
@@ -148,7 +194,7 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.tvChat:/*聊天*/
                 showChat();
                 break;
@@ -183,7 +229,9 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
             view.setLayoutParams(lp);
             llgiftcontent.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
                 @Override
-                public void onViewAttachedToWindow(View view) { }
+                public void onViewAttachedToWindow(View view) {
+                }
+
                 @Override
                 public void onViewDetachedFromWindow(View view) {
                     giftViewCollection.add(view);
@@ -203,13 +251,17 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
         final View removeView = llgiftcontent.getChildAt(index);
         outAnim.setAnimationListener(new Animation.AnimationListener() {
             @Override
-            public void onAnimationStart(Animation animation) { }
+            public void onAnimationStart(Animation animation) {
+            }
+
             @Override
             public void onAnimationEnd(Animation animation) {
                 llgiftcontent.removeViewAt(index);
             }
+
             @Override
-            public void onAnimationRepeat(Animation animation) { }
+            public void onAnimationRepeat(Animation animation) {
+            }
         });
         getActivity().runOnUiThread(new Runnable() {
             @Override
@@ -254,19 +306,23 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
             giftView.startAnimation(inAnim);/*开始执行显示礼物的动画*/
             inAnim.setAnimationListener(new Animation.AnimationListener() {/*显示动画的监听*/
                 @Override
-                public void onAnimationStart(Animation animation) { }
+                public void onAnimationStart(Animation animation) {
+                }
+
                 @Override
                 public void onAnimationEnd(Animation animation) {
                     giftNumAnim.start(giftNum);
                 }
+
                 @Override
-                public void onAnimationRepeat(Animation animation) { }
+                public void onAnimationRepeat(Animation animation) {
+                }
             });
         } else {/*该用户在礼物显示列表*/
             CustomRoundView crvheadimage = (CustomRoundView) giftView.findViewById(R.id.crvheadimage);/*找到头像控件*/
             MagicTextView giftNum = (MagicTextView) giftView.findViewById(R.id.giftNum);/*找到数量控件*/
             int showNum = (Integer) giftNum.getTag() + 1;
-            giftNum.setText("x"+showNum);
+            giftNum.setText("x" + showNum);
             giftNum.setTag(showNum);
             crvheadimage.setTag(System.currentTimeMillis());
             giftNumAnim.start(giftNum);
@@ -287,21 +343,21 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
      * 发送消息
      */
     private void sendText() {
-        if(!etInput.getText().toString().trim().isEmpty()){
-            messageData.add("Johnny: "+etInput.getText().toString().trim());
+        if (!etInput.getText().toString().trim().isEmpty()) {
+            messageData.add("Johnny: " + etInput.getText().toString().trim());
             etInput.setText("");
             messageAdapter.NotifyAdapter(messageData);
             lvmessage.setSelection(messageData.size());
             hideKeyboard();
-        }else
+        } else
             hideKeyboard();
     }
 
     /**
      * 开始计时功能
      */
-    private void startTimer(){
-        Calendar calendar=Calendar.getInstance();
+    private void startTimer() {
+        Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(0);
         calendar.add(Calendar.HOUR_OF_DAY, -8);
         Date time = calendar.getTime();
@@ -327,7 +383,7 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
      * 隐藏软键盘并显示头布局
      */
     public void hideKeyboard() {
-        InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(etInput.getWindowToken(), 0);
     }
 
@@ -342,6 +398,7 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
                 dynamicChangeListviewH(100);
                 dynamicChangeGiftParentH(true);
             }
+
             @Override
             public void keyBoardHide(int height) {/*软键盘隐藏：隐藏聊天输入框并显示聊天按钮，执行显示title动画，并修改listview高度和装载礼物容器的高度*/
                 tvChat.setVisibility(View.VISIBLE);
@@ -355,30 +412,32 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
 
     /**
      * 动态的修改listview的高度
+     *
      * @param heightPX
      */
     private void dynamicChangeListviewH(int heightPX) {
         ViewGroup.LayoutParams layoutParams = lvmessage.getLayoutParams();
-        layoutParams.height= DisplayUtil.dip2px(getActivity(),heightPX);
+        layoutParams.height = DisplayUtil.dip2px(getActivity(), heightPX);
         lvmessage.setLayoutParams(layoutParams);
     }
 
     /**
      * 动态修改礼物父布局的高度
+     *
      * @param showhide
      */
-    private void dynamicChangeGiftParentH(boolean showhide){
-        if(showhide){/*如果软键盘显示中*/
-            if(llgiftcontent.getChildCount()!=0){
+    private void dynamicChangeGiftParentH(boolean showhide) {
+        if (showhide) {/*如果软键盘显示中*/
+            if (llgiftcontent.getChildCount() != 0) {
                 /*判断是否有礼物显示，如果有就修改父布局高度，如果没有就不作任何操作*/
                 ViewGroup.LayoutParams layoutParams = llgiftcontent.getLayoutParams();
-                layoutParams.height=llgiftcontent.getChildAt(0).getHeight();
+                layoutParams.height = llgiftcontent.getChildAt(0).getHeight();
                 llgiftcontent.setLayoutParams(layoutParams);
             }
-        }else{/*如果软键盘隐藏中*/
+        } else {/*如果软键盘隐藏中*/
             /*就将装载礼物的容器的高度设置为包裹内容*/
             ViewGroup.LayoutParams layoutParams = llgiftcontent.getLayoutParams();
-            layoutParams.height= ViewGroup.LayoutParams.WRAP_CONTENT;
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
             llgiftcontent.setLayoutParams(layoutParams);
         }
     }
@@ -397,13 +456,14 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
                 super.onAnimationEnd(animation);
                 isOpen = false;
             }
+
             @Override
             public void onAnimationStart(Animator animation) {
                 super.onAnimationStart(animation);
                 isOpen = true;
             }
         });
-        if(!isOpen) {
+        if (!isOpen) {
             animatorSetShow.start();
         }
     }
@@ -422,6 +482,7 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
                 super.onAnimationEnd(animation);
                 isOpen = false;
             }
+
             @Override
             public void onAnimationStart(Animator animation) {
                 super.onAnimationStart(animation);
@@ -436,12 +497,12 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
     /**
      * 循环执行线程
      */
-    private Runnable timerRunnable=new Runnable() {
+    private Runnable timerRunnable = new Runnable() {
         @Override
         public void run() {
             handler.postDelayed(timerRunnable, 1000);
             long sysTime = System.currentTimeMillis();
-            liveTime+=1000;
+            liveTime += 1000;
             CharSequence sysTimeStr = DateFormat.format("HH:mm:ss", liveTime);
             CharSequence sysDateStr = DateFormat.format("yyyy/MM/dd", sysTime);
             tvtime.setText(sysTimeStr);
@@ -473,19 +534,27 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
         timer.schedule(task, 0, 3000);
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        EventBus.getDefault().unregister(this);
+        unbinder.unbind();
+    }
+
     /**
      * 数字放大动画
      */
     public class NumAnim {
         private Animator lastAnimator = null;
+
         public void start(View view) {
             if (lastAnimator != null) {
                 lastAnimator.removeAllListeners();
                 lastAnimator.end();
                 lastAnimator.cancel();
             }
-            ObjectAnimator anim1 = ObjectAnimator.ofFloat(view, "scaleX",1.3f, 1.0f);
-            ObjectAnimator anim2 = ObjectAnimator.ofFloat(view, "scaleY",1.3f, 1.0f);
+            ObjectAnimator anim1 = ObjectAnimator.ofFloat(view, "scaleX", 1.3f, 1.0f);
+            ObjectAnimator anim2 = ObjectAnimator.ofFloat(view, "scaleY", 1.3f, 1.0f);
             AnimatorSet animSet = new AnimatorSet();
             lastAnimator = animSet;
             animSet.setDuration(200);

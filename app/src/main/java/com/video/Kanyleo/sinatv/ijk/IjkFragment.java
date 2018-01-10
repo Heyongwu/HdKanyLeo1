@@ -38,6 +38,7 @@ public class IjkFragment extends Fragment {
     public void getMes(LiveMessage eventMessage) {
         uri = eventMessage.url;
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = View.inflate(getContext(), R.layout.fragment_ijk,null);

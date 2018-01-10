@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -31,28 +32,27 @@
                 android:paddingTop="5dp">
 
                 <TextView
+                    android:id="@+id/nickname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Johnny"
                     android:textColor="@android:color/white"
                     android:textSize="12sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Android工程师"
-                    android:textColor="@android:color/white"
-                    android:textSize="12sp" />
+
             </LinearLayout>
 
-            <com.video.Kanyleo.sinatv.ijk.CustomRoundView
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/sinatv_image"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@mipmap/ic_headpic"
-                app:border_color="@color/colorPrimary"
-                app:border_width="1dp" />
-        </RelativeLayout>
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
 
+                fresco:roundAsCircle="true"
+             />
+        </RelativeLayout>
         <com.video.Kanyleo.sinatv.ijk.HorizontalListView
             android:id="@+id/hlvaudience"
             android:layout_width="match_parent"

@@ -59,6 +59,7 @@ public class SinatvFragment extends Fragment implements ISinaTvActivity{
 
         }
     } ;
+
     private class MyRunnable implements Runnable
     {
         @Override
@@ -132,9 +133,12 @@ public class SinatvFragment extends Fragment implements ISinaTvActivity{
         adapter.addheader(banner);
         adapter.setOnItemClick(new SinatvAdapter.OnItemClickListener() {
             @Override
-            public void OnItemClick(View view, int position, String url) {
+            public void OnItemClick(View view, int position, String url,String image,String fire,String nickname) {
                 Intent intent = new Intent(getContext(), Main3Activity.class);
-                intent.putExtra("ss",url);
+                intent.putExtra("url",url);
+                intent.putExtra("image",image);
+                intent.putExtra("fire",fire);
+                intent.putExtra("nickname",nickname);
                 startActivity(intent);
             }
         });
@@ -167,8 +171,8 @@ public class SinatvFragment extends Fragment implements ISinaTvActivity{
 //                        videoPresenter.showVideo(min);
 //                        videoAdapter.notifyDataSetChanged();
 //                        rv.loadMoreComplete();
-                        Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
+
+                        myHandler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
                                 /**
@@ -205,8 +209,8 @@ public class SinatvFragment extends Fragment implements ISinaTvActivity{
 //                        videoPresenter.showVideo(min);
 //                        videoAdapter.notifyDataSetChanged();
 //                        rv.loadMoreComplete();
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
+
+                myHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         /**

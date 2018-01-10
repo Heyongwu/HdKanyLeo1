@@ -7,6 +7,7 @@ package com.video.Kanyleo.net;
 public class LiveMessage {
     public String url;
 
+
     public LiveMessage(String url) {
         this.url = url;
     }
