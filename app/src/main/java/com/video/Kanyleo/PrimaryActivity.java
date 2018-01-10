@@ -23,9 +23,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.umeng.socialize.UMAuthListener;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.video.Kanyleo.mine.MyLoginActivity;
+import com.video.Kanyleo.setting.ImgApp2;
 import com.video.Kanyleo.sinatv.SinatvFragment;
 import com.video.Kanyleo.video.VideoFragment;
+
+import java.util.Map;
+
 public class PrimaryActivity extends AppCompatActivity implements View.OnClickListener {
 
 
@@ -80,6 +87,13 @@ public class PrimaryActivity extends AppCompatActivity implements View.OnClickLi
         next_jump = (Button) inflate.findViewById(R.id.next_jump);
         guanbi = (ImageView) inflate.findViewById(R.id.turnoff);
         qq = (ImageView) inflate.findViewById(R.id.QQ_Login);
+        qq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UMShareAPI.get(PrimaryActivity.this).getPlatformInfo(PrimaryActivity.this,SHARE_MEDIA.QQ,umAuthListener);
+                hide();
+            }
+        });
         sina = (ImageView) inflate.findViewById(R.id.sina_Login);
         weixin = (ImageView) inflate.findViewById(R.id.wechat_Login);
         mLayouHide = (LinearLayout) inflate.findViewById(R.id.layou_hide);
@@ -125,7 +139,10 @@ public class PrimaryActivity extends AppCompatActivity implements View.OnClickLi
                 Checkout_phone();
                 hide();
                 break;
-        }
+            case R.id.QQ_Login:
+                UMShareAPI.get(PrimaryActivity.this).getPlatformInfo(PrimaryActivity.this,SHARE_MEDIA.QQ,umAuthListener);
+                hide();
+                break;        }
     }
     private void Checkout_phoneleght() {
         String phoneNums=edit_phone.getText().toString();
@@ -205,5 +222,41 @@ public class PrimaryActivity extends AppCompatActivity implements View.OnClickLi
         public CharSequence getPageTitle(int position) {
             return itemName[position];
         }
+    }
+    private UMAuthListener umAuthListener = new UMAuthListener() {
+        @Override
+        public void onStart(SHARE_MEDIA platform) {
+            //授权开始的回调
+        }
+        @Override
+        public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
+            Toast.makeText(PrimaryActivity.this, "登录成功", Toast.LENGTH_LONG).show();
+            String iconurl = data.get("iconurl");
+            String name = data.get("name");
+            ImgApp2.edit.putString("nickname",name);
+            ImgApp2.edit.putBoolean("isLogin",true);
+            ImgApp2.edit.commit();
+            finish();
+            //使用EventBus把值传给我的
+            Intent intent = new Intent(PrimaryActivity.this,LoginNRActivity.class);
+            startActivity(intent);
+            finish();
+
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, int action, Throwable t) {
+            Toast.makeText( getApplicationContext(), "Authorize fail", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA platform, int action) {
+            Toast.makeText( getApplicationContext(), "Authorize cancel", Toast.LENGTH_SHORT).show();
+        }
+    };
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 }

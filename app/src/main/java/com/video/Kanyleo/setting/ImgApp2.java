@@ -5,12 +5,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
-import com.video.Kanyleo.utils.CrashHandler;
+import com.umeng.socialize.Config;
+import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.UMShareAPI;
 
 
 public class ImgApp2 extends Application {
@@ -20,6 +19,8 @@ public class ImgApp2 extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Config.DEBUG=true;
+        UMShareAPI.get(this);
         Fresco.initialize(this);
         sp = getSharedPreferences("UserID", Context.MODE_APPEND);
         edit = sp.edit();
@@ -29,6 +30,10 @@ public class ImgApp2 extends Application {
 //        CrashHandler handler = CrashHandler.getInstance();
 //        handler.init(getApplicationContext()); //在Appliction里面设置我们的异常处理器为UncaughtExceptionHandler处理器
 //        initImageloader();
+    }
+    {
+        //这是集成工具自动生成的
+        PlatformConfig.setQQZone("1106449221","PZ0Q1Al6feIRyB5f");
     }
     public void initImageloader() {
         //配置参数
