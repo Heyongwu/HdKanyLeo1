@@ -51,6 +51,9 @@ public class MyLoginActivity extends AppCompatActivity implements IloginActivity
         actionBar.hide();
         initView();
         presenter = new LoginPresenter(this);
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("name");
+        mLgEt1.setText(name);
 
     }
 
