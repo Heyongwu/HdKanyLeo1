@@ -5,4 +5,9 @@
         <attr name="AniForeColor" format="color" />
         <attr name="CircleSmaller" format="integer"/>
     </declare-styleable>
+    <!-- 圆形头像 -->
+    <declare-styleable name="CustomRoundView">
+        <attr name="border_width" format="dimension"></attr>
+        <attr name="border_color" format="color"></attr>
+    </declare-styleable>
 </resources>

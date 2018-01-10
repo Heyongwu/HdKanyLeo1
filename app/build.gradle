@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.video.Kanyleo"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -13,8 +13,19 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+
+            buildConfigField 'String', 'API_HOST', '"http://api.huoshan.com/"'
+            buildConfigField 'String', 'API_SNS_HOST', '"https://www.zhaoapi.cn/"'
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            buildConfigField 'String', 'API_HOST', '"http://api.huoshan.com/"'
+            buildConfigField 'String', 'API_SNS_HOST', '"https://www.zhaoapi.cn/"'
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
     }
     allprojects {
         repositories {
@@ -50,8 +61,22 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.1.1'
     compile 'com.youth.banner:banner:1.4.10'
     //    compile 'com.dou361.ijkplayer:jjdxm-ijkplayer:1.0.5'
-    compile 'com.github.leifzhang:IjkLib:0.4.4'
+//    compile 'com.github.leifzhang:IjkLib:0.4.4'
     compile 'net.steamcrafted:load-toast:1.0.12'
     compile 'com.github.CN-ZPH:weibo360panorama:v1.0.1'
     compile 'com.google.vr:sdk-panowidget:1.80.0'
+//    compile 'com.github.open-android:IjkPlayer:1.0.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'jp.wasabeef:glide-transformations:1.0.6'
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4'//没有使用特殊Header，可以不加这行
+    compile 'com.github.open-android:IjkPlayer:1.0.0'
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'//没有使用特殊Header，可以不加这行
+    compile 'com.hyman:flowlayout-lib:1.1.2'
+    compile 'org.greenrobot:eventbus:3.1.1'
+    compile 'tv.danmaku.ijk.media:ijkplayer-armv5:0.7.6'
+    compile 'tv.danmaku.ijk.media:ijkplayer-arm64:0.7.6'
+    compile 'tv.danmaku.ijk.media:ijkplayer-x86:0.7.6'
+    compile 'tv.danmaku.ijk.media:ijkplayer-x86_64:0.7.6'
 }
