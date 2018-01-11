@@ -29,6 +29,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.video.Kanyleo.R;
 import com.video.Kanyleo.net.LiveMessage2;
+import com.video.Kanyleo.sinatv.Heartanimation.HeartLayout;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -107,6 +108,8 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
     private String nickname;
     private TextView tvqq;
     private TextView nickname1;
+    private HeartLayout heartLayout1;
+    private TextView good;
 
     @Nullable
     @Override
@@ -129,10 +132,10 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
         llInputParent = view.findViewById(R.id.llinputparent);
         etInput = view.findViewById(R.id.etInput);
         sendInput = view.findViewById(R.id.sendInput);
-
+        good = view.findViewById(R.id.member_send_good);
         tvqq = view.findViewById(R.id.tvqq);
         nickname1 = view.findViewById(R.id.nickname);
-
+        heartLayout1 = (HeartLayout)view.findViewById(R.id.heart_layout);
         tvChat.setOnClickListener(this);
         tvSendone.setOnClickListener(this);
         tvSendtwo.setOnClickListener(this);
@@ -155,6 +158,12 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
         sinatvImage.setImageURI(Uri.parse(image));
         nickname1.setText(nickname);
 
+        good.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                heartLayout1.addFavor();
+            }
+        });
     }
 
     @Subscribe(sticky = true)

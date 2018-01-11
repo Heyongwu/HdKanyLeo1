@@ -34,7 +34,6 @@ public class Main3Activity extends AppCompatActivity {
         EventBus.getDefault().postSticky(new LiveMessage2(image,fire,nickname));
 
 //        EventBus.getDefault().postSticky(new LiveMessage2(image));
-
         ActionBar bar = getSupportActionBar();
         bar.hide();
         IjkFragment ijkFragment = new IjkFragment();
