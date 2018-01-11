@@ -222,6 +222,10 @@ public class LayerFragment extends Fragment implements View.OnClickListener {
             case R.id.tvSendfor:/*礼物4*/
                 showGift("Johnny4");
                 break;
+
+
+
+
         }
     }
 
